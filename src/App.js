@@ -32,7 +32,7 @@ const updatedTodos = todos.filter((_, i) => i !== index);
 
 <ul className='includetask'>
   {todos.map((item, index) => (
-  <li key={index}>
+  <li key={index} className="list">
     {item}
     <button onClick={() => Delete(index)}>DELETE</button>
   </li>
