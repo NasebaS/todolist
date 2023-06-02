@@ -1,23 +1,48 @@
-import logo from './logo.svg';
+
 import './App.css';
+import Icon from '@mui/material/Icon';
+import {IconButton} from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { useState } from 'react';
+
+
 
 function App() {
+  const [todos,setTodos]= useState([]);
+  const [inputValue,setInputvalue]=useState("");
+  const addInput=(e)=>{
+setTodos([...todos,inputValue]);
+    setInputvalue('');
+  }
+  const insertValue=(e)=>{
+    setInputvalue(e.target.value);
+   
+  }
+  const Delete=(index)=>{
+const updatedTodos = todos.filter((_, i) => i !== index);
+  setTodos(updatedTodos);
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+        <input type="text" className="input" value={inputValue} onChange={(e)=>{insertValue(e)}} />
+        
+<Icon color="primary" onClick={(e)=>{addInput(e)}}>add_circle</Icon>
+
+
+<ul className='includetask'>
+  {todos.map((item, index) => (
+  <li key={index}>
+    {item}
+    <button onClick={() => Delete(index)}>DELETE</button>
+  </li>
+))}
+</ul>
+
+
+
+
+      </div>
     </div>
   );
 }
