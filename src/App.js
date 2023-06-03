@@ -24,17 +24,17 @@ const updatedTodos = todos.filter((_, i) => i !== index);
   }
   return (
     <div className="App">
-      <div>
+      <div className='maindiv'>
         <input type="text" className="input" value={inputValue} onChange={(e)=>{insertValue(e)}} />
         
-<Icon color="primary" onClick={(e)=>{addInput(e)}}>add_circle</Icon>
+<Icon color="primary" onClick={(e)=>{addInput(e)}} size="50px">add_circle</Icon>
 
 
 <ul className='includetask'>
   {todos.map((item, index) => (
   <li key={index} className="list">
     {item}
-    <button onClick={() => Delete(index)}>DELETE</button>
+    <button className="deletebtn" onClick={() => Delete(index)}>DELETE</button>
   </li>
 ))}
 </ul>
